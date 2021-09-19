@@ -2,16 +2,24 @@ from flask import Flask, json, jsonify, request, Response
 from settings import *
 
 # Alternative dictionary in case database usage is not needed
-skills = [{'python':
+skills = [
+    # Adding dictionaries to hold the some book details
     {
-        'name': 'The Cat In The Hat',
-        'price': 6.99,
-        'isbn': 123456789,
+        'name': 'Python',
+        'profession': 'software engineer',
+        'organization_name': 'Google',
+        'specialization': 'desktop graphical user interfaces',
+
+    },
+    {
+        'name': 'Java',
+        'profession': 'Java developers',
+        'organization_name': 'Eclipse Information Technologies',
+        'specialization': 'Cloud Computing',
 
     }
-
-}
 ]
+
 
 
 # Route to get all skills
