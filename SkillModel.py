@@ -56,7 +56,7 @@ class Profession_Industries(db.Model):
 
     # Adding a profession
     def add_profession(_language_id, _profession):
-        newProfession = Language(language_id = _language_id, profession = _profession)
+        newProfession = Profession_Industries(language_id = _language_id, profession = _profession)
         # Adding the profession to the session
         db.session.add(newProfession)
 
@@ -87,6 +87,32 @@ class Major_Organizations(db.Model):
 # Linking with a foreign key
     language_id = db.Column(db.Integer, db.ForeignKey('language.id'), nullable = False)
     organization_name = db.Column(db.String(150), nullable = False)
+
+    # Adding an orgainization
+    def add_organization(_language_id, _organization_name):
+        newMajorOrganization = Major_Organizations(language_id = _language_id, organization_name = _organization_name)
+        # Adding the orgainization to the session
+        db.session.add(newMajorOrganization)
+
+        # Committing the orgainization to the database
+        db.session.commit()
+
+    # Getting all major orgainizations
+    def get_all_organizations():
+        return Major_Organizations.query.all()
+
+    # Beautifying the structure of the output
+    def __repr__(self):
+        organization_object = {
+            'language_id': self.language_id,
+            'organization_name': self.organization_name
+        }
+        # Changing the dictionary to json
+        return json.dumps(organization_object)
+
+
+
+
 
 #Specializations
 class Specialization(db.Model):
