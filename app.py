@@ -24,7 +24,7 @@ skills = [
 
 # Route to get all skills
 @app.route('/')
-def getAllBooks():
+def getAllSkills():
     return jsonify({'skills': skills})
 
 
