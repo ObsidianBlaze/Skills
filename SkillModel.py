@@ -123,3 +123,25 @@ class Specialization(db.Model):
 # Linking with a foreign key
     language_id = db.Column(db.Integer, db.ForeignKey('language.id'), nullable = False)
     specialization = db.Column(db.String(150), nullable = False)
+
+    # Adding an Specialization
+    def add_specialization(_language_id, _specialization):
+        newSpecialization = Specialization(language_id = _language_id, specialization = _specialization)
+        # Adding the specialization to the session
+        db.session.add(newSpecialization)
+
+        # Committing the specialization to the database
+        db.session.commit()
+
+    # Getting all major specializations
+    def get_all_specializations():
+        return Specialization.query.all()
+
+    # Beautifying the structure of the output
+    def __repr__(self):
+        specialization_object = {
+            'language_id': self.language_id,
+            'specialization': self.specialization
+        }
+        # Changing the dictionary to json
+        return json.dumps(specialization_object)
