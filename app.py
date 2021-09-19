@@ -1,6 +1,7 @@
 from flask import Flask, json, jsonify, request, Response
 from settings import *
 
+# Alternative dictionary in case database usage is not needed
 skills = [{'python':
     {
         'name': 'The Cat In The Hat',
@@ -10,7 +11,6 @@ skills = [{'python':
     }
 
 }
-    # Adding dictionaries to hold the some book details
 ]
 
 
