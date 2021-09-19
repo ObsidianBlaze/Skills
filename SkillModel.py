@@ -20,6 +20,27 @@ class Language(db.Model):
     major_organizations = db.relationship('Major_Organizations', backref = 'language', cascade = 'all, delete-orphan', lazy = 'dynamic')
     specialization = db.relationship('Specialization', backref = 'language', cascade = 'all, delete-orphan', lazy = 'dynamic')
 
+    # Adding a language
+    def add_langauge(_name):
+        newLanguage = Language(name = _name)
+        # Adding the language to the session
+        db.session.add(newLanguage)
+
+        # Committing the language to the database
+        db.session.commit()
+
+    # Getting all languages
+    def get_all_languages():
+        return Language.query.all()
+
+    # Beautifying the structure of the output
+    def __repr__(self):
+        language_object = {
+            'name': self.name
+        }
+        # Changing the dictionary to json
+        return json.dumps(language_object)
+
 
 #Profession_Industries model
 class Profession_Industries(db.Model):
