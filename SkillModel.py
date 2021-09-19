@@ -3,6 +3,8 @@ from flask import Flask
 # Import sql alchemy
 from flask_sqlalchemy import SQLAlchemy
 import json
+
+from werkzeug.datastructures import LanguageAccept
 from settings import app
 
 # Creating the object of the database class
@@ -51,6 +53,29 @@ class Profession_Industries(db.Model):
 # Linking with a foreign key
     language_id = db.Column(db.Integer, db.ForeignKey('language.id'), nullable = False)
     profession = db.Column(db.String(150), nullable = False)
+
+    # Adding a profession
+    def add_profession(_language_id, _profession):
+        newProfession = Language(language_id = _language_id, profession = _profession)
+        # Adding the profession to the session
+        db.session.add(newProfession)
+
+        # Committing the profession to the database
+        db.session.commit()
+
+    # Getting all professions
+    def get_all_professions():
+        return Profession_Industries.query.all()
+
+    # Beautifying the structure of the output
+    def __repr__(self):
+        profession_object = {
+            'language_id': self.language_id,
+            'profession': self.profession
+        }
+        # Changing the dictionary to json
+        return json.dumps(profession_object)
+
 
 
 #Major_organization model
