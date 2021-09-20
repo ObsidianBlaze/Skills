@@ -46,7 +46,7 @@ class Language(db.Model):
 
     # Delete a language
     def delete_language(_id):
-        Language.query.filter_by(id = _id).first()
+        Language.query.filter_by(id = _id).delete()
         db.session.commit()
 
     # Beautifying the structure of the output
@@ -92,7 +92,7 @@ class Profession_Industries(db.Model):
 
     # Delete a profession
     def delete_profession(_id):
-        Profession_Industries.query.filter_by(id = _id).first()
+        Profession_Industries.query.filter_by(id = _id).delete()
         db.session.commit()
 
 
@@ -141,7 +141,7 @@ class Major_Organizations(db.Model):
 
     # Delete an organization
     def delete_organization(_id):
-        Major_Organizations.query.filter_by(id = _id).first()
+        Major_Organizations.query.filter_by(id = _id).delete()
         db.session.commit()
 
 
@@ -192,7 +192,7 @@ class Specialization(db.Model):
 
     # Delete a specialization
     def delete_specialization(_id):
-        Specialization.query.filter_by(id = _id).first()
+        Specialization.query.filter_by(id = _id).delete()
         db.session.commit()
 
     # Beautifying the structure of the output
