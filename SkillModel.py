@@ -35,6 +35,15 @@ class Language(db.Model):
     def get_all_languages():
         return Language.query.all()
 
+        # Getting a single language
+    def get_single_language(_id):
+        try:
+         data = Language.query.filter_by(id = _id).first()
+         return data
+        except:
+            return "Some error occured"
+
+
     # Beautifying the structure of the output
     def __repr__(self):
         language_object = {
@@ -66,6 +75,15 @@ class Profession_Industries(db.Model):
     # Getting all professions
     def get_all_professions():
         return Profession_Industries.query.all()
+
+        # Getting a single profession
+    def get_single_profession(_id):
+        try:
+         data = Profession_Industries.query.filter_by(id = _id).first()
+         return data
+        except:
+            return "Some error occured"
+
 
     # Beautifying the structure of the output
     def __repr__(self):
@@ -100,6 +118,15 @@ class Major_Organizations(db.Model):
     # Getting all major orgainizations
     def get_all_organizations():
         return Major_Organizations.query.all()
+
+        # Getting a single organization
+    def get_single_organization(_id):
+        try:
+         data = Major_Organizations.query.filter_by(id = _id).first()
+         return data
+        except:
+            return "Some error occured"
+
 
     # Beautifying the structure of the output
     def __repr__(self):
@@ -136,6 +163,16 @@ class Specialization(db.Model):
     # Getting all major specializations
     def get_all_specializations():
         return Specialization.query.all()
+
+
+        # Getting a single specialization
+    def get_single_specialization(_id):
+        try:
+         data = Specialization.query.filter_by(id = _id).first()
+         return data
+        except:
+            return "Some error occured"
+
 
     # Beautifying the structure of the output
     def __repr__(self):
