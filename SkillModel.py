@@ -35,7 +35,7 @@ class Language(db.Model):
     def get_all_languages():
         return Language.query.all()
 
-        # Getting a single language
+    # Getting a single language
     def get_single_language(_id):
         try:
          data = Language.query.filter_by(id = _id).first()
@@ -43,6 +43,11 @@ class Language(db.Model):
         except:
             return "Some error occured"
 
+
+    # Delete a language
+    def delete_language(_id):
+        Language.query.filter_by(id = _id).first()
+        db.session.commit()
 
     # Beautifying the structure of the output
     def __repr__(self):
@@ -83,6 +88,12 @@ class Profession_Industries(db.Model):
          return data
         except:
             return "Some error occured"
+
+
+    # Delete a profession
+    def delete_profession(_id):
+        Profession_Industries.query.filter_by(id = _id).first()
+        db.session.commit()
 
 
     # Beautifying the structure of the output
@@ -126,6 +137,12 @@ class Major_Organizations(db.Model):
          return data
         except:
             return "Some error occured"
+
+
+    # Delete an organization
+    def delete_organization(_id):
+        Major_Organizations.query.filter_by(id = _id).first()
+        db.session.commit()
 
 
     # Beautifying the structure of the output
@@ -173,6 +190,10 @@ class Specialization(db.Model):
         except:
             return "Some error occured"
 
+    # Delete a specialization
+    def delete_specialization(_id):
+        Specialization.query.filter_by(id = _id).first()
+        db.session.commit()
 
     # Beautifying the structure of the output
     def __repr__(self):
