@@ -22,6 +22,9 @@ class Language(db.Model):
     major_organizations = db.relationship('Major_Organizations', backref = 'language', cascade = 'all, delete-orphan', lazy = 'dynamic')
     specialization = db.relationship('Specialization', backref = 'language', cascade = 'all, delete-orphan', lazy = 'dynamic')
 
+    def json(self):
+        return {'name': self.name}
+
     # Adding a language
     def add_langauge(_name):
         newLanguage = Language(name = _name)
@@ -33,12 +36,12 @@ class Language(db.Model):
 
     # Getting all languages
     def get_all_languages():
-        return Language.query.all()
+        return [Language.json(language) for  language in Language.query.all()]
 
     # Getting a single language
     def get_single_language(_id):
         try:
-         data = Language.query.filter_by(id = _id).first()
+         data = Language.json(Language.query.filter_by(id = _id).first())
          return data
         except:
             return "Some error occured"

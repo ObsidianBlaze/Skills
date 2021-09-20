@@ -1,5 +1,7 @@
 from flask import Flask, json, jsonify, request, Response
 from settings import *
+from SkillModel import *
+import json
 
 # Alternative dictionary in case database usage is not needed
 skills = [
@@ -26,6 +28,13 @@ skills = [
 @app.route('/')
 def getAllSkills():
     return jsonify({'skills': skills})
+
+# Getting single language
+
+@app.route('/language/<int:id>')
+def getLanguage(id):
+    return_value = Language.get_single_language(id)
+    return jsonify(return_value)
 
 
 # Used to show error messages
