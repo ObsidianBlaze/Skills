@@ -43,6 +43,11 @@ class Language(db.Model):
         except:
             return "Some error occured"
 
+    # Updating languague name
+    def update_language_name(_id, _name):
+        language_to_update = Language.query.filter_by(id = _id).first()
+        language_to_update.name = _name
+        db.session.commit
 
     # Delete a language
     def delete_language(_id):
@@ -80,6 +85,13 @@ class Profession_Industries(db.Model):
     # Getting all professions
     def get_all_professions():
         return Profession_Industries.query.all()
+
+
+    # Updating profession name
+    def update_profession_name(_id, _profession):
+        profession_to_update = Profession_Industries.query.filter_by(id = _id).first()
+        profession_to_update.profession = _profession
+        db.session.commit
 
         # Getting a single profession
     def get_single_profession(_id):
@@ -125,6 +137,12 @@ class Major_Organizations(db.Model):
 
         # Committing the orgainization to the database
         db.session.commit()
+
+    # Updating orgainization name
+    def update_orgainization_name(_id, _organization_name):
+        organization_to_update = Major_Organizations.query.filter_by(id = _id).first()
+        organization_to_update.organization_name = _organization_name
+        db.session.commit
 
     # Getting all major orgainizations
     def get_all_organizations():
@@ -180,6 +198,12 @@ class Specialization(db.Model):
     # Getting all major specializations
     def get_all_specializations():
         return Specialization.query.all()
+
+    # Updating specialization name
+    def update_specialization_name(_id, _specialization):
+        specialization_to_update = Major_Organizations.query.filter_by(id = _id).first()
+        specialization_to_update.specialization = _specialization
+        db.session.commit
 
 
         # Getting a single specialization
